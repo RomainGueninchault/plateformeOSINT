@@ -1,0 +1,24 @@
+title: Suppression des clichés instantanés par vssadmin
+id: 1e2f3a4b-5c6d-7e8f-9a0b-1c2d3e4f5g6h
+status: experimental
+description: Détecte l'utilisation de vssadmin pour supprimer les clichés instantanés, ce qui est souvent utilisé par les ransomwares pour empêcher la récupération des fichiers.
+references:
+  - https://attack.mitre.org/techniques/T1490/
+  author: Romain Gueninchault, Joao Abreu, Marie Rougier
+date: 2026-11-10
+tags:
+  - attack.t1490
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    Image|endswith: '\vssadmin.exe'
+    selection_command:
+      CommandLine|contains|all:
+        - 'delete'
+        - 'shadows'
+  condition: selection and selection_command
+falsepositives:
+  - Utilisation légitime de vssadmin pour la gestion des clichés instantanés par les administrateurs système.
+level: high
