@@ -4,7 +4,7 @@ status: experimental
 description: Détecte l'utilisation de vssadmin pour supprimer les clichés instantanés, ce qui est souvent utilisé par les ransomwares pour empêcher la récupération des fichiers.
 references:
   - https://attack.mitre.org/techniques/T1490/
-  author: Romain Gueninchault, Joao Abreu, Marie Rougier
+author: Romain Gueninchault, Joao Abreu, Marie Rougier
 date: 2026-11-10
 tags:
   - attack.t1490
